@@ -1,0 +1,5 @@
+@charset "UTF-8";
+.border01 {
+    width: 300px;
+    border-top: solid 2px gray;
+}
