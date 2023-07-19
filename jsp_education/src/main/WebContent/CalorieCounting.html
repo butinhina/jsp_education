@@ -6,66 +6,81 @@
     <title>基礎代謝・カロリー計算</title>
     <link rel="stylesheet" href="style1.css">
 </head>
-
+<style>
+    .test_form {
+        width: 200px;
+        display: inline-flex;
+    }
+</style>
 <body>
-    <h4>基礎代謝計算</h4>
-    <form name="metabolismform">
-        <div>
-            <input type="radio" name="gender" value="0" checked>
-            男
-            <input type="radio" name="gender" value="1">
-            女
-        </div>
-        <div>
-            <label for="old">年齢</label>
-            <input type="text" id="old" value="">
-            歳
-        </div>
-        <div>
-            <label for="height">身長</label>
-            <input type="text" id="height" value="">
-            cm
-        </div>
-        <div>
-            <label for="weight">体重</label>
-            <input type="text" id="weight" value="">
-            kg
-        </div>
-
-        <div class="border" />
-        <div>
-            <label for="bresult">あなたの基礎代謝</label>
-            <input type="text" id="metabolism" value="" readonly>
-            kcal
-        </div>
-    </form>
-    <form name="caloryform">
-        <divv>
-            <button>追加</button>
-            <label>料理名</label>
-            <input type="text" id="dish" name="foodmenu" value="">
-        
-            <label>カロリー</label>
-            <input type="text" id="calory" name="foodmenu" value="">
-            kcal
-        </divv>
-
-        <div>
-            <label>総カロリー</label>
-            <input type="text" id="totalcalories" value="0" readonly>
-            kcal
-        </div>
-        <div>
-            <label>(基礎代謝)-(総カロリー)</label>
-            <input type="text" id="difference" value="-" readonly>
-            kcal
-        </div>
-        <div>
-            <label>現在の摂取カロリーの割合</label>
-            <input type="text" id="ratio" value="-" readonly>
-            %
-        </div>
-    </form>
+    <table>
+        <form name="metabolismform">
+        <thead>
+            <th>基礎代謝計算</th>
+            <th>カロリー計算</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div name="gender_selection">
+                        <input type="radio" name="gender" value="0" checked>
+                        男
+                        <input type="radio" name="gender" value="1">
+                        女
+                    </div>
+                    <div class="input_container">
+                        <label for="old">年齢</label>
+                        <input type="text" id="old" value="">
+                        歳
+                    </div>
+                    <div class="input_container">
+                        <label for="height">身長</label>
+                        <input type="text" id="height" value="">
+                        cm
+                    </div>
+                    <div class="input_container">
+                        <label for="weight">体重</label>
+                        <input type="text" id="weight" value="">
+                        kg
+                    </div>
+                    <div class="border" />
+                    <div class="input_container">
+                        <label for="bresult">あなたの基礎代謝</label>
+                        <input type="text" id="metabolism" value="" readonly>
+                        kcal
+                    </div>
+                </td>
+                <td>
+                    <div class="input_label">
+                        <label class="test_form">料理名</label>
+                        <label class="test_form">カロリー</label>
+                        <button style="background-color: cornflowerblue;">フォームの追加</button>
+                    </div>
+                    <div class="input_container">
+                        <input class="test_form" type="text" id="dish" name="foodmenu" value="">
+                        <input class="test_form" type="text" id="calorie" name="foodmenu" value="">
+                        kcal
+                        <button style="background-color: red;">削除</button>
+                    </div>
+                    <div class="input_container">
+                        <label>総カロリー</label>
+                        <input type="text" id="totalcalories" value="0" readonly>
+                        kcal
+                    </div>
+                    <div class="input_container">
+                        <label>(基礎代謝)-(総カロリー)</label>
+                        <input type="text" id="difference" value="-" readonly>
+                        kcal
+                    </div>
+                    <div class="input_container">
+                        <label>現在の摂取カロリーの割合</label>
+                        <input type="text" id="ratio" value="-" readonly>
+                        %
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <script type="text/javascript" src="CalorieCounting.js"></script>
 </body>
 

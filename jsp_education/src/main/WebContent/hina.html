@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <h4>基礎代謝計算</h4>
+    <form name="metabolismform">
+        <div>
+            <input type="radio"  name="gender" value="0" checked>
+            男
+            <input type="radio"  name="gender" value="1">
+            女
+        </div>
+        <div>
+            <label for="old">年齢</label>
+            <input type="text" id="old" value="">
+            歳
+        </div>
+        <div>
+            <label for="height">身長</label>
+            <input type="text" id="height" value="">
+            cm
+        </div>
+        <div>
+            <label for="weight">体重</label>
+            <input type="text" id="weight" value="">
+            kg
+        </div>
+
+        <div class="border01">
+            <label for="bresult">あなたの基礎代謝</label>
+            <input type="text" id="metabolism" value="" readonly>
+            kcal
+        </div>
+
+
+    <div>
+        <label>料理名</label>
+        <input type="text" id="dish" value="">
+        kcal
+    </div>
+    <div>
+        <label>カロリー</label>
+        <input type="text" id="calory" value="-">
+        kcal
+    </div>
+    <div>
+        <label>総カロリー</label>
+        <input type="text" id="totalcalories" value="0" readonly>
+        kcal
+    </div>
+    <div>
+        <label>(基礎代謝)-(総カロリー)</label>
+        <input type="text" id="difference" value="-" readonly>
+        kcal
+    </div>
+    <div>
+        <label>現在の摂取カロリーの割合</label>
+        <input type="text" id="ratio" value="-" readonly>
+        %
+    </div>
+    </form>
+    <script type="text/javascript" src="hina.js"></script>
+</body>
+</html>
