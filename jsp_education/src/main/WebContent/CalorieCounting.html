@@ -52,15 +52,15 @@
                 </td>
                 <td>
                     <div class="input_label">
-                        <label class="test_form">料理名</label>
-                        <label class="test_form">カロリー</label>
-                        <button style="background-color: cornflowerblue;">フォームの追加</button>
+                        <label class="test_form_label">料理名</label>
+                        <label class="test_form_label">カロリー</label>
+                        <button style="background-color: cornflowerblue;" id="add_form">フォームの追加</button>
                     </div>
-                    <div class="input_container">
+                    <div class="input_calorie_form">
                         <input class="test_form" type="text" id="dish" name="foodmenu" value="">
-                        <input class="test_form" type="text" id="calorie" name="foodmenu" value="">
+                        <input class="test_form calorie_form" type="text" id="calorie" name="foodmenu" value="">
                         kcal
-                        <button style="background-color: red;">削除</button>
+                        <button style="background-color: red;" id="delete" value="削除">削除</button>
                     </div>
                     <div class="input_container">
                         <label>総カロリー</label>

@@ -10,6 +10,7 @@ const totalcalories = document.getElementById('totalcalories');
 const difference = document.getElementById('difference');
 const ratio = document.getElementById('ratio');
 const foodMenu = document.getElementsByName("foodmenu");
+let calorieForms = document.querySelectorAll(".calorie_form");
 
 //画面が表示されたとき行う
 window.onload = function() {
@@ -27,7 +28,6 @@ window.onload = function() {
 function calcMetabolism() {
     // 画面で選択されている性別を取得
     var gender = Number(document.querySelector('input[type="radio"][name="gender"]:checked').value);
-//    totalcalories.value = Number(calorie.value);
     if (gender == 0) {
         // 男性の場合
         metabolism.value = Math.round((Number(weight.value) * 13.397 + Number(height.value) * 4.799 - Number(old.value) * 5.677 + 88.362) * 10) / 10;        
@@ -35,47 +35,46 @@ function calcMetabolism() {
         // 女性の場合
         metabolism.value = Math.round((Number(weight.value) * 9.247 + Number(height.value) * 3.098 - Number(old.value) * 4.33 + 447.593) * 10) / 10;        
     }
+    // 総カロリーを計算
+//    totalcalories.value = Number(calorie.value);
     // 差分と割合を計算
-    difference.value = Number(metabolism.value) - Number(totalcalories.value);
-    ratio.value = Math.round((Number(totalcalories.value) / Number(metabolism.value)) * 100);
+//    difference.value = Number(metabolism.value) - Number(totalcalories.value);
+//    ratio.value = Math.round((Number(totalcalories.value) / Number(metabolism.value)) * 100);
     
 }
 
-function inputFoodMenu() {
-    
-    const dishLabel = document.createElement('label');
-    dishLabel.textContent = '料理名';
-    
-    const newDishForm = document.createElement('input');
-    newDishForm.type = 'text';
-    newDishForm.id = 'dish';
-    newDishForm.name = 'foodmenu';
-    newDishForm.value = '';
-    
-    const calLabel = document.createElement('label');
-    calLabel.textContent = 'カロリー';
-    
-    const newCalForm = document.createElement('input');
-    newCalForm.type = 'text';
-    newCalForm.id = 'calorie';
-    newCalForm.name = 'foodmenu';
-    newCalForm.value = '';
-    
-    const addBtn = document.createElement('button');
-    addBtn.innerHTML = "追加"
-    
-    const delBtn = document.createElement('button');
-    delBtn.innerHTML = "削除"
-    
-    
-    const div = document.querySelector('div');
-    div.appendChild(dishLabel);
-    div.appendChild(newDishForm);
-    div.appendChild(calLabel);
-    div.appendChild(newCalForm);
-    div.appendChild(addBtn);
-    div.appendChild(delBtn);    
+// カロリーの計算処理
+function calorieCalc () {
+    let result = 0;
+    calorieForms.forEach(calorieForm => {
+        result += Number(calorieForm.value);
+    });
+    totalcalories.value = result;
 }
+// カロリー初期入力の処理
+calorieForms.forEach(calorieForm => {
+    calorieForm.addEventListener('change', calorieCalc);
+});
+
+// ボタンクリック後の処理
+document.querySelector('#add_form').addEventListener('click', () => {
+    const newForm = document.createElement('input');
+//    newForm.setAttribute("name", "foodmenu");
+    newForm.type = 'text';
+    newForm.name = 'foodmenu';
+    newForm.value = '';
+//    const deleteButton = document.createElement('button[id="delete"]');
+const deleteButton = document.createElement('button');
+    deleteButton.style="background-color: red;";
+    deleteButton.id="delete";
+    deleteButton.value="削除";
+    const div = document.querySelector('.input_calorie_form');
+    div.appendChild(newForm);
+    div.appendChild(deleteButton);
+    newForm.addEventListener('change', calorieCalc);
+    calorieForms = document.querySelectorAll('.calorie_form');
+});
+
 
 old.addEventListener('change', () => {
     calcMetabolism();
@@ -89,10 +88,12 @@ weight.addEventListener('change', () => {
     calcMetabolism();
 });
 
-calorie.addEventListener('change', () => {
-    calcMetabolism();
-}); 
+//calorie.addEventListener('change', () => {
+//    calcMetabolism();
+//});
 
-document.querySelector('button').addEventListener('click', () => {
-    inputFoodMenu(); 
+calorie.addEventListener('change', () => {
+    calorieCalc();
 });
+
+// 削除ボタンの発火
