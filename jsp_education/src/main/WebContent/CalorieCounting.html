@@ -45,35 +45,35 @@
                     </div>
                     <div class="border" />
                     <div class="input_container">
-                        <label for="bresult">あなたの基礎代謝</label>
+                        <label for="metabolism">あなたの基礎代謝</label>
                         <input type="text" id="metabolism" value="" readonly>
                         kcal
                     </div>
                 </td>
                 <td>
                     <div class="input_label">
-                        <label class="test_form_label">料理名</label>
-                        <label class="test_form_label">カロリー</label>
-                        <button style="background-color: cornflowerblue;" id="add_form">フォームの追加</button>
+                        <label class="test_form">料理名</label>
+                        <label class="test_form">カロリー</label>
+                        <button type="button" "background-color: cornflowerblue;" id="add_form">フォームの追加</button>
                     </div>
                     <div class="input_calorie_form">
-                        <input class="test_form" type="text" id="dish" name="foodmenu" value="">
-                        <input class="test_form calorie_form" type="text" id="calorie" name="foodmenu" value="">
-                        kcal
-                        <button style="background-color: red;" id="delete" value="削除">削除</button>
+                        <input class="test_form form_clump" type="text" name="foodmenu" value="">
+                        <input class="test_form calorie_form form_clump" type="text" name="foodmenu" value="">
+                        <span>kcal</span>
+                        <button class="form_clump" type="button" style="background-color: red;" value="削除">削除</button>
                     </div>
                     <div class="input_container">
-                        <label>総カロリー</label>
+                        <label for="totalcalories">総カロリー</label>
                         <input type="text" id="totalcalories" value="0" readonly>
                         kcal
                     </div>
                     <div class="input_container">
-                        <label>(基礎代謝)-(総カロリー)</label>
+                        <label for="difference">(基礎代謝)-(総カロリー)</label>
                         <input type="text" id="difference" value="-" readonly>
                         kcal
                     </div>
                     <div class="input_container">
-                        <label>現在の摂取カロリーの割合</label>
+                        <label for="ratio">現在の摂取カロリーの割合</label>
                         <input type="text" id="ratio" value="-" readonly>
                         %
                     </div>
