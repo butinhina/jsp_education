@@ -15,8 +15,18 @@ let input_calorie_forms = document.querySelectorAll('.input_calorie_form');
 //let input_calorie_forms = document.querySelectorAll('.form_clump');
 const input_total_calories = document.querySelector('.input_totalcalories');// 総カロリーの前に追加フォームを置くために総カロリーの要素を取得
 let deleteButtons = document.querySelectorAll('.delete');
+let input_calorie_form = document.querySelector('.input_calorie_form');
 
-console.log(calorieForms[0].value);
+//deleteButtonEventSet();
+//// 削除ボタンにEventListenerを設定
+//function deleteButtonEventSet() {
+//    deleteButtons.forEach(deleteButton => {
+//        deleteButton.addEventListener('click', () => {
+//            deleteButton.parentElement.remove;
+//        });
+//    });
+//}
+
 //画面が表示されたとき行う
 window.onload = function() {
     // 性別ラジオの要素を配列として取得
@@ -48,6 +58,12 @@ function calcMetabolism() {
 
 }
 
+//                // 最初に表示される削除ボタンにEventListenerを設定する
+//                let deleteButton = document.querySelector('.delete');
+//                let testForm = input_total_calories.querySelector('.test_form');
+//                deleteButton.addEventListener('click', () => {
+//                    testForm.valu = "";
+//                });
 
 // カロリーの計算処理
 function calorieCalc() {
@@ -61,6 +77,16 @@ function calorieCalc() {
 calorieForms.forEach(calorieForm => {
     calorieForm.addEventListener('change', calorieCalc);
 });
+
+// 最初に表示される削除ボタンにEventListenerを設定する
+let deleteButton = document.querySelector('.delete');
+deleteButton.addEventListener('click', () => {
+    var testForms = input_calorie_forms[0].getElementsByClassName('test_form');
+    for (let i = 0; i < testForms.length; i++) {
+        testForms[i].value = "";
+    };
+});
+
 
 // ボタンクリック後の処理
 document.querySelector('#add_form').addEventListener('click', () => {
@@ -88,16 +114,32 @@ document.querySelector('#add_form').addEventListener('click', () => {
 
     // input_calorie_formの複製
     let clone_form = input_calorie_forms[0].cloneNode(true);
+    // 追加ボタン押下時の処理で削除ボタンが画面に追加されるときに
+    // EventListenerを設定してから追加する
+    let cloneDelete = clone_form.querySelector('.delete');
+    cloneDelete.addEventListener('click', () => {
+        cloneDelete.parentElement.remove();
+    });
     // 複製した要素のvalueを空にする
     let testForms = clone_form.getElementsByClassName('test_form');
-        for( let i=0; i < testForms.length; i++){
-            testForms[i].value = "";
-        };
-        
-    
+    for (let i = 0; i < testForms.length; i++) {
+        testForms[i].value = "";
+    };
+
     // 複製したHTML要素をページに挿入
     //    input_calorie_forms.after(clone_form);
     input_total_calories.before(clone_form);
+
+
+    //    //    deleteButtonEventSet();
+    //    // 削除ボタンにEventListenerを設定
+    //    //    function deleteButtonEventSet() {
+    //    deleteButtons.forEach(deleteButton => {
+    //        deleteButton.addEventListener('click', () => {
+    //            deleteButton.parentNode.remove;
+    //        });
+    //    });
+    //    //    }
 
 
 
@@ -115,18 +157,27 @@ document.querySelector('#add_form').addEventListener('click', () => {
     input_calorie_forms = document.querySelectorAll('.input_calorie_form');// 追加後の新たなフォームの状態をDOMに伝える
     //    addCalorieForm.addEventListener('change', calorieCalc);
     //        input_calorie_forms = document.querySelectorAll('.form_clump');
+
+
 });
 
-// フォームの削除処理内容
-function deleteForm() {
-    input_calorie_forms.remove();
-}
+
+//// フォームの削除処理内容
+//    for (let i = 0; i < deleteButtons.length; i++) {
+//        deleteButtons[i].addEventListener('click', (e) => {
+//            e.currentTarget.remove();
+//        });
+//    };
+//    input_calorie_forms.forEach(inputCalorieForm => {
+//        inputCalorieForm.remove();
+//        input_calorie_forms = document.querySelectorAll('.input_calorie_form');
+//    });
 // 指定のボタンクリック後の処理
-deleteButtons.forEach(deleteButton => {
-    deleteButton.addEventListener('click', deleteForm);
-    console.log(deleteButtons);
-    input_calorie_forms = document.querySelectorAll('.input_calorie_form');
-})
+//deleteButtons.forEach(deleteButton => {
+//    deleteButton.addEventListener('click', deleteForm);
+//    console.log(deleteButtons);
+//    input_calorie_forms = document.querySelectorAll('.input_calorie_form');
+//})
 
 old.addEventListener('change', () => {
     calcMetabolism();
@@ -148,5 +199,7 @@ weight.addEventListener('change', () => {
 //    calorieCalc();
 //});
 
-// 削除ボタンの発火
-
+//// 削除ボタンの発火
+//deleteButtons.addEventListener('click', () => {
+//    deleteButtonEventSet();
+//});
